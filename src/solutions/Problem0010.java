@@ -5,7 +5,7 @@ import util.PrimeSieve;
 /**
  * Project Euler Solution
  * Problem 0010
- * @author Alastair Games
+ * @author Luke Petrolekas
  *
  * License: MIT
  */

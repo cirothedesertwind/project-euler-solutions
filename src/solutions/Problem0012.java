@@ -5,7 +5,7 @@ import util.PrimeSolver;
 /*
  * Project Euler Solution
  * Problem 0012
- * @author Alastair Games
+ * @author Luke Petrolekas
  *
  * License: MIT
  */

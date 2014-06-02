@@ -7,7 +7,7 @@ package solutions;
 /**
  * Project Euler Solution
  * Problem 0014
- * @author Alastair Games
+ * @author Luke Petrolekas
  *
  * License: MIT
  */

@@ -3,7 +3,7 @@ package solutions;
 /**
  * Project Euler Solution Problem 0031
  * 
- * @author Alastair Games
+ * @author Luke Petrolekas
  * License: MIT
  */
 public class Problem0031 {

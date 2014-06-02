@@ -4,7 +4,7 @@ import util.*;
 /*
  * Project Euler Solution
  * Problem 0003
- * @author Alastair Games
+ * @author Luke Petrolekas
  *
  * License: MIT
  */

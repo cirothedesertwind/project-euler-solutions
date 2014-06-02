@@ -5,7 +5,7 @@ import util.EulerSieve;
 /**
  * Project Euler Solution
  * Problem 0007
- * @author Alastair Games
+ * @author Luke Petrolekas
  *
  * License: MIT
  */
