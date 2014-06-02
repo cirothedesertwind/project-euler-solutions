@@ -11,15 +11,21 @@ import util.EulerSieve;
  */
 public class Problem0007 {
       
-    private static final int VALUE = 10; //magic number empirically determined
+    private static final int VALUE = 10000000; //magic number empirically determined
+    private static final int TARGET = 10001;
     
     public static void main(String[] args){
         EulerSieve e = new EulerSieve(VALUE);
-        for (int i = 0; i < VALUE; i++){
+        
+        int count = 0;
+        int index = -1;
+        
+        for (int i = 0; i < VALUE && count < TARGET; i++)
             if (e.isPrime(i)){
-                    System.out.println(i);
+                count++;
+                index = i;
             }
-            
-        }
+        
+        System.out.println(index);
     }
 }
