@@ -1,5 +1,7 @@
 package util;
 
+import java.util.Arrays;
+
 /**
  * A very simple prime number solver.
  *
@@ -8,32 +10,34 @@ package util;
 public final class PrimeSolver {
 
     public static void main(String[] args){
-        for (int i = 2; i < 20; i++){
-        System.out.println(""+i+isPrime(i));
-        }
+        for (long prime : factor(21))
+            System.out.println(prime);
     }
 
     public static long[] factor(long n){
         LongVector v = new LongVector();
-
-        long temp = n;
-
-        //make the number odd
-        while (temp % 2 == 0){
-            temp = temp / 2;
-            v.addElement(2);
-        }
-
         //use fermat factorization on the remaining odd part
-        v.addElements(factorFermat(temp));
-        return v.array();
+        v.addElements(factorFermat(n));
+        long[] copy = Arrays.copyOf(v.array(), v.array().length);
+        Arrays.sort(copy);
+        return copy;
     }
 
 
     /* http://en.wikipedia.org/wiki/Fermat's_factorization_method */
     private static long[] factorFermat(long n){
-        if (n % 2 == 0)
-            throw new RuntimeException("Only used for odd integers.");
+        int count2s = 0;
+        //make the number odd
+        while (n % 2 == 0){
+            n = n / 2;
+            count2s++;
+        }
+        
+        //Create array of twos
+        long[] twosArray = new long[count2s];
+        Arrays.fill(twosArray, 2);
+        
+        //Handle odd part
 
         long a = (long)Math.ceil(Math.sqrt(n));
         long b2 = a*a - n;
@@ -42,17 +46,19 @@ public final class PrimeSolver {
             a++;
             b2 = a*a - n;
         }
-
+        
+       
         long x = a - (long)Math.sqrt(b2);
         long y = a + (long)Math.sqrt(b2);
 
         if (x == 1 || y == 1)
             if (x == 1)
-                return new long[]{y};
+                return ArrayUtil.union(twosArray, new long[]{y});
             else
-                return new long[]{x};
+                return ArrayUtil.union(twosArray, new long[]{x});
         
-        return ArrayUtil.union(factorFermat(x), factorFermat(y));
+        return ArrayUtil.union(twosArray, 
+                ArrayUtil.union(factorFermat(x), factorFermat(y)));
     }
 
 

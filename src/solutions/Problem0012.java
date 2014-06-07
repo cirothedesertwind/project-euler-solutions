@@ -12,27 +12,32 @@ import util.PrimeSolver;
 public class Problem0012 {
     
     public static void main(String[] args){
-        long[] d = PrimeSolver.factor(24);
-        
-        for (int i = 0; i < d.length;i++)
-            System.out.println(d[i]);
+        int divisors = 1;
+        long n = 0L;
+        for (int i = 1; divisors < 501; i++){
+             n = (i*(i+1))/2;
+             long[] pf = PrimeSolver.factor(n);
+             divisors = tauCounter(pf);
+             System.out.println("Triangle number " + i + ", "+ n + " = " + divisors);
+        }
     }
     
     //factors must be sorted.
-    private static int divisors(long[] factors){
+    private static int tauCounter(long[] factors){
+        int c = 1;
+        long comparator = -1;
         int divisors = 1;
-        int power = 0;
-        long factor = 0;
-        for (long f : factors){
-            if (f != factor){
-                divisors *= power;
-                power = 1;
-                factor = f;
+        for (long prime : factors){
+            if (prime == comparator){
+                c++;
+            }else{
+                //new prime number;
+                divisors *= (c+1);                
+                c=1;
+                comparator = prime;
             }
-            else{
-                power++;
-            }
-        }
+            
+        } 
         
         return divisors;
     }
