@@ -41,7 +41,7 @@ public class Problem0017 {
             int v = i;
             c = 0;
 
-            System.out.print(i + ": ");
+            //System.out.print(i + ": ");
 
             if (v / 1000 > 0) {
                 c += thousandLen;
